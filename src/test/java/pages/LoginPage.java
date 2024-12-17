@@ -25,5 +25,4 @@ public class LoginPage {
         loginButtonSelector.click();
         return this;
     }
-
 }
