@@ -9,10 +9,11 @@ import pages.ProfilePage;
 import tests.TestBase;
 
 import static data.AuthData.USER_NAME;
+@Tag("API")
+@DisplayName("Verification of DemoQA Platform Book Store")
 
 public class BookStoreTests extends TestBase {
     @DisplayName("Remove the book from UI side")
-    @Tag("API")
     @Test
     @WithLogin
     void SuccessfulDeletionOfBookTest() {
