@@ -3,6 +3,7 @@ package tests.com.demoqa;
 import api.BooksActions;
 import helpers.extensions.WithLogin;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.ProfilePage;
 import tests.TestBase;
@@ -11,6 +12,7 @@ import static data.AuthData.USER_NAME;
 
 public class BookStoreTests extends TestBase {
     @DisplayName("Remove the book from UI side")
+    @Tag("API")
     @Test
     @WithLogin
     void SuccessfulDeletionOfBookTest() {
