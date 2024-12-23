@@ -14,8 +14,8 @@ public class ProfilePage {
             deleteConfirmButton = $("#closeSmallModal-ok"),
             notLoggedInBanner = $(".form-label");
 
-    private static final String BOOK_LINK_TEMPLATE = "a[href='/profile?book=%s']";
-    private static final String DELETE_BUTTON_SELECTOR = "#delete-record-undefined";
+    private final String BOOK_LINK_TEMPLATE = "a[href='/profile?book=%s']";
+    private final String DELETE_BUTTON_SELECTOR = "#delete-record-undefined";
 
     @Step("Open the Profile Page")
     public ProfilePage openPage() {
@@ -36,14 +36,14 @@ public class ProfilePage {
         return this;
     }
 
-    @Step("Verify that a book is available in the user profile")
+    @Step("Verify that new book is available in the user profile from first row")
     public ProfilePage checkBookInUserProfile(String isbn) {
         firstBookRow.$(String.format(BOOK_LINK_TEMPLATE, isbn)).shouldBe(visible);
         return this;
     }
 
-    @Step("Delete a book from the profile page")
-    public ProfilePage deleteBookFromProfile() {
+    @Step("Delete first book from the profile page")
+    public ProfilePage deleteBookFromProfile(String isbn) {
         firstBookRow.$(DELETE_BUTTON_SELECTOR).shouldBe(visible).click();
         deleteConfirmButton.shouldBe(visible).click();
         return this;

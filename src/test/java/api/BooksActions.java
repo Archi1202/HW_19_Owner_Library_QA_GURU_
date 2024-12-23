@@ -79,7 +79,7 @@ public class BooksActions {
                 .extract().as(BooksFromStoreResponseModel.class);
     }
 
-    @Step("Get random ISBN.")
+    @Step("Get random ISBN")
     public String getRandomIsbn() {
         BooksFromStoreResponseModel booksFromStore = getAllBooks();
         if (booksFromStore == null || booksFromStore.getBooks().isEmpty()) {
