@@ -1,16 +1,16 @@
 plugins {
     id 'java-library'
-    id "io.freefair.lombok" version "8.0.1"
-    id 'io.qameta.allure' version '2.11.2'
+    id "io.freefair.lombok" version "6.0.0-m2"
+    id 'io.qameta.allure' version '2.12.0'
 }
 
 group = 'anuar1202'
 version = '1.0-SNAPSHOT'
 
-def junitVersion = "5.11.1",
-    selenideVersion = "7.0.0",
+def junitVersion = "5.11.3",
+    selenideVersion = "7.5.1",
     restAssuredVersion = "5.5.0",
-    allureVersion = "2.21.0",
+    allureVersion = "2.29.0",
     assertjVersion = "3.24.2"
 
 

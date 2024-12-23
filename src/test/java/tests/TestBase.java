@@ -17,7 +17,6 @@ public class TestBase {
 
     @BeforeAll
     static void setUp() {
-        Configuration.baseUrl = "https://demoqa.com/";
         RestAssured.baseURI = "https://demoqa.com/";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -32,10 +31,10 @@ public class TestBase {
         } else {
             Configuration.remote = null;
         }
-        Configuration.timeout = 10000;
+        Configuration.baseUrl = "https://demoqa.com/";
         Configuration.browser = System.getProperty("browserName","chrome");
-        Configuration.browserSize = System.getProperty("browserSize");
-        Configuration.browserVersion = System.getProperty("browserVersion");
+        Configuration.browserSize = System.getProperty("browserSize","1920x1080");
+        Configuration.browserVersion = System.getProperty("browserVersion","125.0");
     }
 
     @BeforeEach
