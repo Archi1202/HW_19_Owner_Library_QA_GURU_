@@ -5,8 +5,7 @@ import models.LoginRequestModel;
 import models.LoginResponseModel;
 
 import static io.restassured.RestAssured.given;
-import static specs.Specification.requestSpecification;
-import static specs.Specification.responseSpec200;
+import static specs.Specification.*;
 
 public class Authorization {
 
@@ -17,7 +16,7 @@ public class Authorization {
         requestModel.setPassword(userPassword);
 
         return given()
-                .spec(requestSpecification)
+                .spec(requestSpec)
                 .body(requestModel)
                 .when()
                 .post("/Account/v1/Login")

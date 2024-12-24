@@ -1,7 +1,6 @@
 package api;
 
 import io.qameta.allure.Step;
-import io.restassured.specification.RequestSpecification;
 import models.*;
 
 import java.util.List;
@@ -15,15 +14,9 @@ import static specs.Specification.*;
 
 public class BooksActions {
 
-    private RequestSpecification withAuth() {
-        return given(requestSpecification)
-                .header("Authorization", "Bearer " + USER_TOKEN);
-    }
-
-
     @Step("Remove all books from the profile")
     public BooksActions deleteAllBooks() {
-        given(requestSpecification)
+        given(requestSpec)
                 .header("Authorization", "Bearer " + USER_TOKEN)
                 .queryParam("UserId", USER_ID)
                 .when()
@@ -41,7 +34,7 @@ public class BooksActions {
         BooksCollectionRequestModel booksCollection = new BooksCollectionRequestModel();
         booksCollection.setUserId(USER_ID);
         booksCollection.setCollectionOfIsbns(List.of(book));
-        given(requestSpecification)
+        given(requestSpec)
                 .header("Authorization", "Bearer " + USER_TOKEN)
                 .body(booksCollection)
                 .when()
@@ -55,7 +48,7 @@ public class BooksActions {
     public static List<BookModel> getUserBooks() {
 
         BooksFromProfileResponseModel response =
-                given(requestSpecification)
+                given(requestSpec)
                         .when()
                         .header("Authorization", "Bearer " + USER_TOKEN)
                         .get("/Account/v1/User/" + USER_ID)
@@ -70,7 +63,7 @@ public class BooksActions {
     @Step("Get list of all available books from shop")
     public BooksFromStoreResponseModel getAllBooks() {
 
-        return given(requestSpecification)
+        return given(requestSpec)
                 .when()
                 .header("Authorization", "Bearer " + USER_TOKEN)
                 .get("/BookStore/v1/Books")

@@ -24,6 +24,13 @@ public class ProfilePage extends TestBase {
         return this;
     }
 
+    public ProfilePage removeBanners() {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+
+        return this;
+    }
+
     @Step("Verify that the correct user is logged in")
     public ProfilePage checkLoginData(String username) {
         userNameValue.shouldHave(text(username));
