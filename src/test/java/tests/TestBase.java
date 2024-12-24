@@ -18,7 +18,7 @@ public class TestBase {
 
     @BeforeAll
     static void setUp() {
-        RestAssured.baseURI = "https://demoqa.com/";
+        RestAssured.baseURI = "https://demoqa.com";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
@@ -32,7 +32,7 @@ public class TestBase {
         } else {
             Configuration.remote = null;
         }
-        Configuration.baseUrl = "https://demoqa.com/";
+        Configuration.baseUrl = "https://demoqa.com";
         Configuration.browser = System.getProperty("browserName","chrome");
         Configuration.browserSize = System.getProperty("browserSize","1920x1080");
         Configuration.browserVersion = System.getProperty("browserVersion","125.0");
