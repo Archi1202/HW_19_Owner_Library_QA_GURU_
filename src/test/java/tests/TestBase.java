@@ -16,8 +16,6 @@ import java.util.Map;
 
 public class TestBase {
 
-    private final ProfilePage profilePage = new ProfilePage();
-
     @BeforeAll
     static void setUp() {
         RestAssured.baseURI = "https://demoqa.com/";
@@ -43,6 +41,7 @@ public class TestBase {
     @BeforeEach
     void preTest() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        ProfilePage profilePage = new ProfilePage();
         profilePage.removeBanners();
     }
 
