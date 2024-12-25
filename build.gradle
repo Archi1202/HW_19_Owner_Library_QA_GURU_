@@ -6,11 +6,7 @@ plugins {
 
 version = '1.0-SNAPSHOT'
 
-def junitVersion = "5.11.3",
-    selenideVersion = "7.5.1",
-    restAssuredVersion = "5.5.0",
-    allureVersion = "2.29.0",
-    assertjVersion = "3.24.2"
+def allureVersion = "2.29.0"
 
 
 repositories {
@@ -33,13 +29,16 @@ allure {
 
 dependencies {
     testImplementation(
-            "org.junit.jupiter:junit-jupiter:$junitVersion",
-            "com.codeborne:selenide:$selenideVersion",
-            "io.rest-assured:rest-assured:$restAssuredVersion",
-            "io.rest-assured:json-schema-validator:$restAssuredVersion",
-            "io.qameta.allure:allure-selenide:$allureVersion",
-            "io.qameta.allure:allure-rest-assured:$allureVersion",
-            "org.assertj:assertj-core:$assertjVersion"
+            "org.junit.jupiter:junit-jupiter:5.11.3",
+            "com.codeborne:selenide:7.5.1",
+            "io.rest-assured:rest-assured:5.5.0",
+            "io.rest-assured:json-schema-validator:5.5.0",
+            "io.qameta.allure:allure-selenide:2.29.0",
+            "io.qameta.allure:allure-rest-assured:2.29.0",
+            "org.assertj:assertj-core:3.24.2",
+            "io.github.bonigarcia:webdrivermanager:5.9.2",
+            "org.aeonbits.owner:owner:1.0.12"
+
     )
 }
 
