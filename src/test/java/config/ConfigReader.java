@@ -10,7 +10,8 @@ public enum ConfigReader {
                     (WebDriverConfig.class,
                             System.getProperties()
                     );
-    public WebDriverConfig read(){
+
+    public WebDriverConfig read() {
         return webDriverConfig;
     }
 }

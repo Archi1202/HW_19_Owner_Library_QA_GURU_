@@ -5,29 +5,34 @@ import config.web.WebDriverConfig;
 import io.restassured.RestAssured;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.util.Map;
+
 public class ProjectConfiguration {
     private final WebDriverConfig webDriverConfig;
 
-    public ProjectConfiguration(config.web.WebDriverConfig webDriverConfig) {
+    public ProjectConfiguration(WebDriverConfig webDriverConfig) {
         this.webDriverConfig = webDriverConfig;
     }
 
-    public void apiConfig(){
+    public void configureApi() {
         RestAssured.baseURI = webDriverConfig.baseUrl();
     }
 
-    public void webConfig(){
+    public void configureWeb() {
         Configuration.baseUrl = webDriverConfig.baseUrl();
         Configuration.browser = webDriverConfig.browserName().toString();
         Configuration.browserVersion = webDriverConfig.browserVersion();
         Configuration.browserSize = webDriverConfig.browserSize();
-        if (webDriverConfig.isRemote()) {
-            com.codeborne.selenide.Configuration.remote = webDriverConfig.remoteURL().toString();
+
+        if (webDriverConfig.remoteURL() != null) {
+            Configuration.remote = webDriverConfig.remoteURL().toString();
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability("enableVNC", true);
-            capabilities.setCapability("enableVideo", true);
+            capabilities.setCapability
+                    ("selenoid:options", Map.<String, Object>of(
+                            "enableVNC", true,
+                            "enableVideo", true));
+
+            Configuration.browserCapabilities = capabilities;
         }
-
     }
-
 }

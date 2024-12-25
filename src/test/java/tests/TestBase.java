@@ -21,8 +21,8 @@ public class TestBase {
         Configuration.pageLoadStrategy = "eager";
 
         ProjectConfiguration projectConfiguration = new ProjectConfiguration(webDriverConfig);
-        projectConfiguration.apiConfig();
-        projectConfiguration.webConfig();
+        projectConfiguration.configureApi();
+        projectConfiguration.configureWeb();
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
