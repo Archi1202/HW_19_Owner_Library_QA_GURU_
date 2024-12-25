@@ -1,4 +1,4 @@
-package config;
+package config.web;
 
 import org.aeonbits.owner.Config;
 
@@ -13,18 +13,19 @@ public interface WebDriverConfig extends Config {
 
     @Key("browser.name")
     @Config.DefaultValue("CHROME")
-    String getBrowserName();
-
+    Browser browserName();
     @Key("browser.version")
     @Config.DefaultValue("125.0")
-    String getBrowserVersion();
-
+    String browserVersion();
     @Key("browser.size")
     @Config.DefaultValue("1920x1080")
-    String getBrowserSize();
-
+    String browserSize();
+    @Key("baseUrl")
+    String baseUrl();
+    @Key("isRemote")
+    boolean isRemote();
     @Key("remoteUrl")
-    URL getRemoteURL();
+    URL remoteURL();
 
 
 }

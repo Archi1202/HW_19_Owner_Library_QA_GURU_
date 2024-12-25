@@ -3,46 +3,28 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import config.ConfigReader;
+import config.ProjectConfiguration;
+import config.web.WebDriverConfig;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
-import io.restassured.RestAssured;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import pages.ProfilePage;
-
-import java.util.Map;
 
 public class TestBase {
 
+    private static final WebDriverConfig webDriverConfig = ConfigReader.Instance.read();
+
     @BeforeAll
     static void setUp() {
-        RestAssured.baseURI = "https://demoqa.com";
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
 
         Configuration.pageLoadStrategy = "eager";
-        Configuration.browserCapabilities = capabilities;
-        if (System.getProperty("remote") != null) {
-            Configuration.remote = "https://" + System.getProperty("login") + "@" + System.getProperty("remote");
-        } else {
-            Configuration.remote = null;
-        }
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browser = System.getProperty("browserName","chrome");
-        Configuration.browserSize = System.getProperty("browserSize","1920x1080");
-        Configuration.browserVersion = System.getProperty("browserVersion","125.0");
-    }
 
-    @BeforeEach
-    void preTest() {
+        ProjectConfiguration projectConfiguration = new ProjectConfiguration(webDriverConfig);
+        projectConfiguration.apiConfig();
+        projectConfiguration.webConfig();
+
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-        ProfilePage profilePage = new ProfilePage();
-        profilePage.removeBanners();
     }
 
     @AfterEach
