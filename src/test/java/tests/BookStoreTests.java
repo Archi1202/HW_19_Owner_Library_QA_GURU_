@@ -1,4 +1,4 @@
-package tests.com.demoqa;
+package tests;
 
 import api.BooksActions;
 import helpers.extensions.WithLogin;
@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.ProfilePage;
-import tests.TestBase;
 
 import static data.AuthData.USER_NAME;
 
